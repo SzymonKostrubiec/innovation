@@ -17,7 +17,7 @@ final class EmployeeResolver
     {
         Assert::notEmpty($uuid);
         $employee = $this->employeeRepository->findOneBy(['uuid' => $uuid]);
-        Assert::notEmpty($employee);
+        Assert::notNull($employee, "Employee with uuid {$uuid} not found.");
         return $employee;
     }
 }

@@ -5,7 +5,6 @@ namespace App\Checker;
 use App\Calculator\DateIntervalCalculator;
 use App\Entity\WorkTime;
 use App\Repository\WorkTimeRepository;
-use DateInterval;
 
 final class WorkTimeChecker implements WorkTimeCheckerInterface
 {
