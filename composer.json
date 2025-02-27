@@ -1,4 +1,6 @@
 {
+    "name": "Innovation Software - recruitment task",
+    "description": "Project for recruitment",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
