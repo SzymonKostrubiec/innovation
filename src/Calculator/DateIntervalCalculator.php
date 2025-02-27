@@ -7,7 +7,7 @@ use DateTimeImmutable;
 final class DateIntervalCalculator implements DateIntervalCalculatorInterface
 {
 
-    public function calculateTotalHours(DateTimeImmutable $startDate, DateTimeImmutable $endDate): int
+    public function calculateTotalHours(\DateTimeInterface $startDate, \DateTimeInterface $endDate): int
     {
         $interval = $startDate->diff($endDate);
         $totalHours = $interval->days * 24 + $interval->h;

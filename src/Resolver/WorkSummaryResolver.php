@@ -19,8 +19,10 @@ final class WorkSummaryResolver
     {
         $startDate = new DateTimeImmutable($date);
         $startDate->format('Y-m-d');
-        $employeeWork = $this->workTimeRepository->find(['employee' => $employee, 'startDate' => $startDate]);
-        Assert::null($employeeWork);
+        $employeeWork = $this->workTimeRepository->findBy(['employee' => $employee, 'startDate' => $startDate]);
+        Assert::isArray($employeeWork);
+
+
         return $employeeWork;
     }
 
@@ -39,6 +41,8 @@ final class WorkSummaryResolver
             ->setParameter('endOfMonth', $endOfMonth)
             ->getQuery()
             ->getResult();
+
+        Assert::isArray($employeeWork);
 
         return $employeeWork;
     }
