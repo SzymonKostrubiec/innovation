@@ -6,14 +6,6 @@ namespace App\Calculator;
 final class DateIntervalCalculator implements DateIntervalCalculatorInterface
 {
 
-    public function calculateTotalHours(\DateTimeInterface $startDate, \DateTimeInterface $endDate): int
-    {
-        $interval = $startDate->diff($endDate);
-        $totalHours = $interval->days * 24 + $interval->h;
-
-        return $totalHours;
-    }
-
     public function calculateTotalHoursRounded(\DateTime $startDate, \DateTime $endDate): float
     {
         $startDate = $this->roundMinutes($startDate);

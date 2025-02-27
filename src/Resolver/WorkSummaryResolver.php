@@ -18,10 +18,8 @@ final class WorkSummaryResolver
     public function resolveByDay(Employee $employee, string $date): array
     {
         $startDate = new DateTimeImmutable($date);
-        $startDate->format('Y-m-d');
-        $employeeWork = $this->workTimeRepository->findBy(['employee' => $employee, 'startDate' => $startDate]);
+        $employeeWork = $this->workTimeRepository->findBy(['employee' => $employee, 'startDay' => $startDate]);
         Assert::isArray($employeeWork);
-
 
         return $employeeWork;
     }

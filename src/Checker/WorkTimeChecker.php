@@ -40,16 +40,17 @@ final class WorkTimeChecker implements WorkTimeCheckerInterface
     private function givenTimeIsCorrect(WorkTime $workTime): bool
     {
 
-        /** @var \DateTimeInterface $startDate */
+        /** @var \DateTime $startDate */
         $startDate = $workTime->getStartDate();
-        /** @var \DateTimeInterface $endDate */
+        /** @var \DateTime $endDate */
         $endDate = $workTime->getEndDate();
 
         if ($startDate >= $endDate) {
             throw new \Exception("Start date must be earlier than end date.");
         }
 
-        $totalHours = $this->dateIntervalCalculator->calculateTotalHours($startDate, $endDate);
+        $totalHours = $this->dateIntervalCalculator->calculateTotalHoursRounded($startDate, $endDate);
+
 
         if ($totalHours > 12) {
             throw new \Exception("Work time must not exceed 12 hours.");
