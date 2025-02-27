@@ -17,15 +17,18 @@ final class DateIntervalCalculator implements DateIntervalCalculatorInterface
         return $totalHours;
     }
 
+
     private function roundMinutes(\DateTime $date): \DateTime
     {
         $minutes = (int) $date->format('i');
-        $roundedMinutes = round($minutes / 15) * 15;
+        $roundedMinutes = (int) round($minutes / 15) * 15;
 
-        if ($roundedMinutes === 60) {
-            return $date->modify('+1 hour')->setTime($date->format('H'), 0);
+        $hour = (int) $date->format('H');
+
+        if ($roundedMinutes >= 60) {
+            return $date->modify('+1 hour')->setTime($hour + 1, 0);
         }
 
-        return $date->setTime($date->format('H'), $roundedMinutes);
+        return $date->setTime($hour, $roundedMinutes);
     }
 }

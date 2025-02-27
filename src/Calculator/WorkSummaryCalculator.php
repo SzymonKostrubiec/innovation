@@ -61,7 +61,9 @@ final class WorkSummaryCalculator implements WorkSummaryCalculatorInterface
         $configuration = $this->configurationRepository->find(1);
         Assert::notNull($configuration);
         $extraRate = $this->calculateExtraRate($configuration);
+        /** @var float $standardRate */
         $standardRate = $configuration->getHourlyRate();
+
         $money = [
             'standard_rate' => $standardRate,
             'extra_rate' => $extraRate,
