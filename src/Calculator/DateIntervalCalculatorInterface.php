@@ -2,7 +2,6 @@
 
 namespace App\Calculator;
 
-use DateTimeImmutable;
 
 interface DateIntervalCalculatorInterface
 {
