@@ -17,15 +17,14 @@ class EmployeeController extends AbstractController
     public function __construct(
         private readonly EmployeeFactoryInterface $employeeFactory,
         private readonly EmployeeCreatorInterface $employeeCreator,
-    )
-    {
+    ){
     }
 
     #[Route( '', name: 'create-employee', methods: ['POST'])]
     #[OA\Post(
         operationId: 'create-employee',
         summary: 'Creates employee',
-        tags: ['Company'],
+        tags: ['Employees'],
 
     )]
     #[OA\RequestBody(
