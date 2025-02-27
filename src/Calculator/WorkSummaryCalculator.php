@@ -49,10 +49,9 @@ final class WorkSummaryCalculator implements WorkSummaryCalculatorInterface
             $extra = $hours - self::DAILY_HOURS;
             $actualHours['standard_hours'] += self::DAILY_HOURS;
             $actualHours['extra_hours'] += $extra;
-        } else {
-            $actualHours['standard_hours'] += $hours;
+            return $actualHours;
         }
-
+        $actualHours['standard_hours'] += $hours;
         return $actualHours;
     }
 

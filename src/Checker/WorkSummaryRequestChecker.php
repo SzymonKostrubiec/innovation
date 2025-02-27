@@ -22,5 +22,19 @@ final class WorkSummaryRequestChecker implements WorkSummaryRequestCheckerInterf
         if(!in_array($request->get("type"), $availableTypes)){
             throw new \Exception('Invalid work summary request type');
         }
+
+        if ($request->get("type") === WorkSummaryEnum::DAY->value &&
+            !preg_match('/^\d{4}-\d{2}-\d{2}$/', $request->get("date"))
+        )
+        {
+            throw new \Exception('Invalid date format. Expected format: Y-m-d.');
+        }
+
+        if ($request->get("type") === WorkSummaryEnum::MONTH->value &&
+            !preg_match('/^\d{4}-\d{2}$/', $request->get("date"))
+        )
+        {
+            throw new \Exception('Invalid date format. Expected format: Y-m.');
+        }
     }
 }

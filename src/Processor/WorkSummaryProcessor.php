@@ -23,6 +23,10 @@ final class WorkSummaryProcessor
         $employee = $this->employeeResolver->resolveByUuid($workSummaryRequest['uuid']);
         $workData = $this->getWorkData($workSummaryRequest, $employee);
 
+        if(empty($workData)){
+            throw new \Exception(sprintf('No work records found for employee %s on %s.', $employee->getUuid(), $workSummaryRequest['date']));
+        }
+
         $data = $this->workSummaryCalculator->getCalculatedData($workData);
 
        return $data;
