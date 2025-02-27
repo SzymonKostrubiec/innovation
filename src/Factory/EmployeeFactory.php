@@ -11,9 +11,15 @@ final class EmployeeFactory implements EmployeeFactoryInterface
     public function create(EmployeeDto $employeeDto): Employee
     {
         $employee = new Employee();
-        $employee->setName($employeeDto->name);
+
+        /** @var string $employeeName */
+        $employeeName = $employeeDto->name;
+        /** @var string $employeeLastName */
+        $employeeLastName = $employeeDto->lastName;
+
+        $employee->setName($employeeName);
         $employee->setUuid(Uuid::v4()->toRfc4122());
-        $employee->setLastName($employeeDto->lastName);
+        $employee->setLastName($employeeLastName);
 
         return $employee;
     }

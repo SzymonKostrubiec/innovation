@@ -38,7 +38,9 @@ final class WorkTimeChecker implements WorkTimeCheckerInterface
     private function givenTimeIsCorrect(WorkTime $workTime): bool
     {
 
+        /** @var \DateTimeInterface $startDate */
         $startDate = $workTime->getStartDate();
+        /** @var \DateTimeInterface $endDate */
         $endDate = $workTime->getEndDate();
 
         if ($startDate >= $endDate) {
