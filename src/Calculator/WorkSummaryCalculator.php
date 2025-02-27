@@ -33,18 +33,27 @@ final class WorkSummaryCalculator implements WorkSummaryCalculatorInterface
 
         foreach ($workData as $workTime) {
             $startTime = $workTime->getStartDate();
-            $endTime =  $workTime->getEndDate();
+            $endTime = $workTime->getEndDate();
 
-            $interval = $this->dateIntervalCalculator->calculateTotalHoursRounded($startTime,$endTime);
-            if((int)$interval > self::DAILY_HOURS){
-                $extra = $interval - self::DAILY_HOURS;
-                $hours['standard_hours'] += self::DAILY_HOURS;
-                $hours['extra_hours'] += $extra;
-            }
-            $hours['standard_hours'] += $interval;
+            $interval = $this->dateIntervalCalculator->calculateTotalHoursRounded($startTime, $endTime);
+
+            $hours = $this->increaseHours($interval, $hours);
         }
 
         return $hours;
+    }
+
+    private function increaseHours(float $hours, array $actualHours): array
+    {
+        if ($hours > self::DAILY_HOURS) {
+            $extra = $hours - self::DAILY_HOURS;
+            $actualHours['standard_hours'] += self::DAILY_HOURS;
+            $actualHours['extra_hours'] += $extra;
+        } else {
+            $actualHours['standard_hours'] += $hours;
+        }
+
+        return $actualHours;
     }
 
     private function calculateMoney(array $workedHours): array
