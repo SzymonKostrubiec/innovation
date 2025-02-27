@@ -22,6 +22,7 @@
         "symfony/maker-bundle": "^1.62",
         "symfony/runtime": "7.2.*",
         "symfony/twig-bundle": "7.2.*",
+        "symfony/validator": "7.2.*",
         "symfony/yaml": "7.2.*",
         "symplify/easy-coding-standard": "^12.5",
         "twig/extra-bundle": "^2.12|^3.0",
