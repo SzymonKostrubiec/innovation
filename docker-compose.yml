@@ -1,0 +1,32 @@
+version: '3'
+services:
+  php:
+    build:
+      context: docker
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - "${CATALOG:-.}/:/app"
+    ports:
+      - "${HTTP_PORT:-8000}:80"
+    depends_on:
+      - mysql
+    networks:
+      - innovation
+    container_name: symfony
+
+
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+    ports:
+      - ${MYSQL_PORT:-3306}:3306
+    networks:
+      - innovation
+
+networks:
+  innovation:
+    driver: bridge

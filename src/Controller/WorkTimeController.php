@@ -64,7 +64,10 @@ class WorkTimeController extends AbstractController
             $this->workTimeCreator->createFromEntity($workTimeEntity);
             return new JsonResponse(['Czas pracy został dodany!']);
         }catch (\Exception $exception){
-            return new JsonResponse(['Error' => $exception->getMessage()], 400);
+            return new JsonResponse([
+                'message' => 'Validation failed',
+                'error' => $exception->getMessage(),
+            ], 400);
         }
     }
 }

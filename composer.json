@@ -1,4 +1,6 @@
 {
+    "name": "sk/innovation",
+    "description": "Short description of the project",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
