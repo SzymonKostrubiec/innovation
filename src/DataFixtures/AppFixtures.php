@@ -17,8 +17,8 @@ final class AppFixtures extends Fixture
     {
         $configuration = new Configuration();
         $configuration->setMonthlyNormHours(40);
-        $configuration->setHourlyRate(random_int(1000, 5000));
-        $configuration->setOvertimeMultiplier(random_int(150, 300));
+        $configuration->setHourlyRate(20);
+        $configuration->setOvertimeMultiplier(200);
 
         $manager->persist($configuration);
         $manager->flush();
