@@ -8,11 +8,11 @@ final class EmployeeDto
 {
     public function __construct(
         #[Assert\NotBlank]
-        #[Assert\Type('string')]
+        #[Assert\Type('string', 'Employee name can not be blank')]
         public ?string $name,
 
         #[Assert\NotBlank]
-        #[Assert\Type('string')]
+        #[Assert\Type('string', 'Employee last name can not be blank')]
         public ?string $lastName,
     ){
     }
